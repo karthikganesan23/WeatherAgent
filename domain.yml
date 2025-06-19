@@ -1,0 +1,36 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_weather
+
+entities:
+  - location
+
+slots:
+  location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: location
+
+
+responses:
+  utter_greet:
+  - text: "Hello! I can tell you the current weather. Where are you located?"
+
+  utter_ask_location:
+  - text: "Please tell me the location you want the weather for..."
+
+
+  utter_goodbye:
+  - text: "Bye"
+
+actions:
+  - action_get_weather
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
